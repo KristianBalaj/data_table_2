@@ -320,7 +320,7 @@ class PaginatedDataTable2State extends State<PaginatedDataTable2> {
     final List<DataRow> result = <DataRow>[];
 
     if (widget.emptyBuilder != null && widget.source.rowCount < 1)
-      return SynchronousFuture(result);
+      return Future.value(result);
 
     final int nextPageFirstRowIndex = firstRowIndex + rowsPerPage;
 
