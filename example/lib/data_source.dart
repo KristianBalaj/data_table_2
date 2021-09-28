@@ -565,7 +565,7 @@ class AsyncDessertDataSource extends AsyncDataTableSource {
   }
 
   @override
-  Future<List<DataRow>> getRows(int start, int end) {
+  Future<List<DataRow>> getRows(BuildContext context, int start, int end) {
     return Future.delayed(Duration(seconds: 3)).then(
       (_) {
         if (start > 0) {

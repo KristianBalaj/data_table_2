@@ -25,7 +25,7 @@ abstract class AsyncDataTableSource extends ChangeNotifier {
   ///
   /// Data returned from this method must be consistent for the lifetime of the
   /// object. If the row count changes, then a new delegate must be provided.
-  Future<List<DataRow>> getRows(int start, int end);
+  Future<List<DataRow>> getRows(BuildContext context, int start, int end);
 
   /// Called to obtain the number of rows to tell the user are available.
   ///

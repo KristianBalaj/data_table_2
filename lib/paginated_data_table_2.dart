@@ -316,7 +316,8 @@ class PaginatedDataTable2State extends State<PaginatedDataTable2> {
       widget.onPageChanged!(_firstRowIndex);
   }
 
-  Future<List<DataRow>> _getRows(int firstRowIndex, int rowsPerPage) {
+  Future<List<DataRow>> _getRows(
+      BuildContext context, int firstRowIndex, int rowsPerPage) {
     final List<DataRow> result = <DataRow>[];
 
     if (widget.emptyBuilder != null && widget.source.rowCount < 1)
@@ -324,7 +325,8 @@ class PaginatedDataTable2State extends State<PaginatedDataTable2> {
 
     final int nextPageFirstRowIndex = firstRowIndex + rowsPerPage;
 
-    return widget.source.getRows(firstRowIndex, nextPageFirstRowIndex - 1);
+    return widget.source
+        .getRows(context, firstRowIndex, nextPageFirstRowIndex - 1);
   }
 
   void _handleFirst() {
@@ -503,7 +505,7 @@ class PaginatedDataTable2State extends State<PaginatedDataTable2> {
               child: ConstrainedBox(
                 constraints: BoxConstraints(minWidth: constraints.minWidth),
                 child: FutureBuilder<List<DataRow>>(
-                  future: _getRows(_firstRowIndex, widget.rowsPerPage),
+                  future: _getRows(context, _firstRowIndex, widget.rowsPerPage),
                   builder: (
                     BuildContext context,
                     AsyncSnapshot<List<DataRow>> snapshot,
